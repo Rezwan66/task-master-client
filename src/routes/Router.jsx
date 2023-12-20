@@ -4,6 +4,8 @@ import Home from '../pages/Home';
 import AddTask from '../pages/AddTask';
 import Todo from '../pages/Todo';
 import ErrorPage from '../pages/ErrorPage';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 const Router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const Router = createBrowserRouter([
         element: <Todo></Todo>,
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login></Login>,
+  },
+  {
+    path: '/register',
+    element: <Register></Register>,
   },
 ]);
 

@@ -1,3 +1,4 @@
+import { Typewriter } from 'react-simple-typewriter';
 import bannerImg from '../assets/images/banner.jpg';
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
       >
         <div className="hero-overlay bg-opacity-70"></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="flex flex-col items-center justify-center">
+          <div className="max-w-2xl">
             <h2 className="md:text-7xl text-4xl text-center max-w-2xl font-semibold">
               Empower Your{' '}
               <span className="text-yellow-600 dark:text-purple-600">
@@ -20,12 +21,27 @@ const Home = () => {
               . Master Your{' '}
               <span className="text-yellow-600 dark:text-blue-600">Tasks</span>.
             </h2>
-            <p className="my-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+            <p className="text-xl font-semibold my-10">
+              <span className="dark:text-yellow-600">
+                {' '}
+                <Typewriter
+                  words={[
+                    'Streamline your daily workflow!',
+                    'Effortlessly create tasks and keep them organized!',
+                    'Boost your productivity and reach your goals!',
+                  ]}
+                  loop={0}
+                  cursor
+                  cursorStyle="_"
+                  typeSpeed={70}
+                  deleteSpeed={20}
+                  delaySpeed={1000}
+                />
+              </span>
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary capitalize">
+              Let&apos;s Explore
+            </button>
           </div>
         </div>
       </div>

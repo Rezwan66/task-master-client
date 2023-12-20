@@ -39,7 +39,7 @@ const NavBar = () => {
           Home
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink
           className={({ isActive }) =>
             isActive ? 'text-orange-400 font-bold underline' : ''
@@ -48,8 +48,8 @@ const NavBar = () => {
         >
           Add Task
         </NavLink>
-      </li>
-      <li>
+      </li> */}
+      {/* <li>
         <NavLink
           className={({ isActive }) =>
             isActive ? 'text-orange-400 font-bold underline' : ''
@@ -58,8 +58,8 @@ const NavBar = () => {
         >
           ToDo
         </NavLink>
-      </li>
-      <li>
+      </li> */}
+      {/* <li>
         <NavLink
           className={({ isActive }) =>
             isActive ? 'text-orange-400 font-bold underline' : ''
@@ -67,6 +67,36 @@ const NavBar = () => {
           to="/dashboard"
         >
           Dashboard
+        </NavLink>
+      </li> */}
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'text-orange-400 font-bold underline' : ''
+          }
+          to="/addTask"
+        >
+          Who is it for
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'text-orange-400 font-bold underline' : ''
+          }
+          to="/addTask"
+        >
+          Let&apos;s Explore
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'text-orange-400 font-bold underline' : ''
+          }
+          to="/addTask"
+        >
+          FAQ
         </NavLink>
       </li>
     </>

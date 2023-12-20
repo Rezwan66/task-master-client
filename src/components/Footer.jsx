@@ -3,7 +3,7 @@ import Container from './Container';
 
 const Footer = () => {
   return (
-    <footer className="bg-ghost ">
+    <footer className="bg-neutral text-neutral-content">
       <Container>
         <div className="footer items-center p-4">
           <aside className="items-center grid-flow-col">

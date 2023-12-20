@@ -8,7 +8,7 @@ const AddTask = () => {
   };
 
   return (
-    <div className="my-36 flex justify-center">
+    <div className="my-40 flex justify-center">
       <div className="relative flex flex-col rounded-xl bg-clip-border shadow-xl p-10">
         <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal text-center antialiased">
           Add Tasks Here
