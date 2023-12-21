@@ -1,14 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Home from '../pages/Home';
-import AddTask from '../pages/AddTask';
-import Todo from '../pages/Todo';
 import ErrorPage from '../pages/ErrorPage';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import PrivateRoute from './PrivateRoute';
 import Dashboard from '../layouts/Dashboard';
 import DashboardHome from '../pages/Dashboard/DashboardHome';
+import AddTask from '../pages/Dashboard/AddTask';
+import Todo from '../pages/Dashboard/Todo';
 
 const Router = createBrowserRouter([
   {
@@ -19,14 +19,6 @@ const Router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-      },
-      {
-        path: '/addTask',
-        element: <AddTask></AddTask>,
-      },
-      {
-        path: '/todo',
-        element: <Todo></Todo>,
       },
     ],
   },
@@ -47,8 +39,16 @@ const Router = createBrowserRouter([
     ),
     children: [
       {
-        path: '',
+        path: 'profile',
         element: <DashboardHome></DashboardHome>,
+      },
+      {
+        path: 'addTask',
+        element: <AddTask></AddTask>,
+      },
+      {
+        path: 'todo',
+        element: <Todo></Todo>,
       },
     ],
   },

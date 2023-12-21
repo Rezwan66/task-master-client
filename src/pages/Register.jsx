@@ -4,8 +4,9 @@ import { AuthContext } from '../providers/AuthProvider';
 import bannerImg from '../assets/images/banner.jpg';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
-import useAxiosPublic from '../hooks/useAxiosPublic';
+// import useAxiosPublic from '../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -13,7 +14,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Register = () => {
   const { createUser, updateUserProfile, googleLogin } =
     useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -28,7 +29,7 @@ const Register = () => {
     console.log(data);
     const imageFile = { image: data.image[0] };
     // console.log(imageFile);
-    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+    const res = await axios.post(image_hosting_api, imageFile, {
       headers: {
         'content-type': 'multipart/form-data',
       },

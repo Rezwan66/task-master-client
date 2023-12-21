@@ -40,7 +40,7 @@ const Home = () => {
                 />
               </span>
             </p>
-            <Link to="/dashboard">
+            <Link to="/dashboard/profile">
               <button className="btn btn-primary btn-sm capitalize">
                 Let&apos;s Explore
               </button>

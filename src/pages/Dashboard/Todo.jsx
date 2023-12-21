@@ -1,7 +1,7 @@
 const Todo = () => {
   return (
     <div>
-      <p> HELLO I Am Todo </p>
+      <h2> HELLO I Am Todo </h2>
     </div>
   );
 };

@@ -115,7 +115,7 @@ const NavBar = () => {
             className={({ isActive }) =>
               isActive ? 'text-orange-400 font-bold underline' : ''
             }
-            to="/dashboard"
+            to="/dashboard/profile"
           >
             Dashboard
           </NavLink>
@@ -124,7 +124,7 @@ const NavBar = () => {
             className={({ isActive }) =>
               isActive ? 'text-orange-400 font-bold underline' : ''
             }
-            to="/dashboard"
+            to="/dashboard/profile"
           >
             Let&apos;s Explore
           </NavLink>

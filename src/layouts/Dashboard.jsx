@@ -31,7 +31,7 @@ const Dashboard = () => {
           <ul className="menu uppercase p-4 w-80 text-lg min-h-full bg-violet-200 dark:bg-zinc-900 dark:text-white">
             {/* logo+website name */}
             <div className="flex items-center justify-center gap-4 mb-8">
-              <Link to="/dashboard">
+              <Link to="/dashboard/profile">
                 <button className="btn btn-ghost font-black md:text-xl tracking-widest">
                   Task Master
                 </button>
@@ -39,7 +39,7 @@ const Dashboard = () => {
             </div>
             {/* Sidebar content here */}
             <li>
-              <NavLink to="/dashboard">
+              <NavLink to="/dashboard/profile">
                 <FaUserAstronaut />
                 My Profile
               </NavLink>
@@ -47,7 +47,7 @@ const Dashboard = () => {
             <li>
               <NavLink to="/dashboard/addTask">
                 <FaPlusCircle />
-                Add Task
+                Add A Task
               </NavLink>
             </li>
             <li>
