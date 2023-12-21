@@ -87,7 +87,7 @@ const AddTask = () => {
                 </span>
               </label>
               <textarea
-                type="text"
+                type="textarea"
                 name="description"
                 {...register('description')}
                 placeholder="task description"

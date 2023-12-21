@@ -53,7 +53,7 @@ const Dashboard = () => {
             <li>
               <NavLink to="/dashboard/todo">
                 <FaCalendarAlt />
-                TODO
+                My tasks
               </NavLink>
             </li>
             {/* go to home/mainLayout-shared links */}
