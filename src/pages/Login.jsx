@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
   const { loginUser, googleLogin } = useContext(AuthContext);
@@ -16,7 +17,6 @@ const Login = () => {
   } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
-
   const from = location.state?.from?.pathname || '/';
 
   const onSubmit = data => {
@@ -161,7 +161,7 @@ const Login = () => {
             onClick={handleGoogleLogin}
             className="btn bg-white btn-block capitalize my-8"
           >
-            Sign In with Google
+            Sign In with Google <FcGoogle className="text-lg" />
           </button>
         </div>
       </div>

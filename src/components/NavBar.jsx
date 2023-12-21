@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 import Container from './Container';
+import { AuthContext } from '../providers/AuthProvider';
+import toast from 'react-hot-toast';
 
 const NavBar = () => {
   const [mode, setMode] = useState('light');
+  const { user, logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleChangeTheme = () => {
     const html = document.documentElement;
@@ -26,6 +30,32 @@ const NavBar = () => {
     document.documentElement.classList.add(currentMode);
     setMode(currentMode);
   }, []);
+
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => {
+        toast('Logged Out Successfully!', {
+          icon: '👋',
+          style: {
+            borderRadius: '8px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
+        navigate('/', { replace: true });
+      })
+      .catch(err => {
+        console.log(err.message);
+        toast(err.message, {
+          icon: '❌',
+          style: {
+            borderRadius: '8px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
+      });
+  };
 
   const navLinks = (
     <>
@@ -126,13 +156,13 @@ const NavBar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="gap-6 menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="gap-6 menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 dark:text-black"
               >
                 {navLinks}
               </ul>
             </div>
             <Link to="/">
-              <button className="btn btn-ghost font-black text-xl tracking-widest">
+              <button className="btn btn-ghost font-black md:text-xl tracking-widest">
                 Task Master
               </button>
             </Link>
@@ -148,7 +178,28 @@ const NavBar = () => {
                 <BsToggleOn></BsToggleOn>
               )}
             </button>
-            <button className="btn btn-sm btn-primary">Login</button>
+            {user && user?.photoURL ? (
+              <div className="flex items-center gap-2">
+                <div className="avatar md:block hidden">
+                  <div className="w-7 rounded-full">
+                    <img src={user?.photoURL} />
+                  </div>
+                </div>
+                <p className="md:block hidden text-sm text-[#D99904] font-semibold">
+                  {user?.displayName}
+                </p>
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-sm btn-secondary"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="btn btn-sm btn-primary">Login</button>
+              </Link>
+            )}
           </div>
         </div>
       </Container>
