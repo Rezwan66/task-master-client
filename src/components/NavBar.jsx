@@ -110,14 +110,25 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? 'text-orange-400 font-bold underline' : ''
-          }
-          to="/addTask"
-        >
-          Let&apos;s Explore
-        </NavLink>
+        {user ? (
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? 'text-orange-400 font-bold underline' : ''
+            }
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
+        ) : (
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? 'text-orange-400 font-bold underline' : ''
+            }
+            to="/dashboard"
+          >
+            Let&apos;s Explore
+          </NavLink>
+        )}
       </li>
       <li>
         <NavLink
@@ -186,7 +197,7 @@ const NavBar = () => {
                   </div>
                 </div>
                 <p className="md:block hidden text-sm text-[#D99904] font-semibold">
-                  {user?.displayName}
+                  {user?.displayName.split(' ')[0]}
                 </p>
                 <button
                   onClick={handleLogout}

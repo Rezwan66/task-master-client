@@ -6,6 +6,9 @@ import Todo from '../pages/Todo';
 import ErrorPage from '../pages/ErrorPage';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import PrivateRoute from './PrivateRoute';
+import Dashboard from '../layouts/Dashboard';
+import DashboardHome from '../pages/Dashboard/DashboardHome';
 
 const Router = createBrowserRouter([
   {
@@ -34,6 +37,20 @@ const Router = createBrowserRouter([
   {
     path: '/register',
     element: <Register></Register>,
+  },
+  {
+    path: 'dashboard',
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: '',
+        element: <DashboardHome></DashboardHome>,
+      },
+    ],
   },
 ]);
 

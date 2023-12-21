@@ -1,5 +1,6 @@
 import { Typewriter } from 'react-simple-typewriter';
 import bannerImg from '../assets/images/banner.jpg';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -39,9 +40,11 @@ const Home = () => {
                 />
               </span>
             </p>
-            <button className="btn btn-primary capitalize">
-              Let&apos;s Explore
-            </button>
+            <Link to="/dashboard">
+              <button className="btn btn-primary btn-sm capitalize">
+                Let&apos;s Explore
+              </button>
+            </Link>
           </div>
         </div>
       </div>
