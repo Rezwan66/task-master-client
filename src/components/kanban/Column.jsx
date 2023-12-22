@@ -11,7 +11,7 @@ const Container = styled.div`
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  border: 1px solid gray;
+  border: 0.5px solid lightgray;
 `;
 
 const Title = styled.h3`
@@ -22,18 +22,20 @@ const Title = styled.h3`
 
 const TaskList = styled.div`
   padding: 3px;
+  padding-top: 10px;
   transition: background-color 0.2s ease;
   background-color: #f4f5f7;
   flex-grow: 1;
   min-height: 100px;
 `;
 
-const Column = ({ title, tasks, id }) => {
+const Column = ({ title, tasks, refetch, id }) => {
   return (
     <Container className="column">
       <Title
+        className="font-semibold"
         style={{
-          backgroundColor: 'lightblue',
+          backgroundColor: 'lightpink',
           position: 'stick',
         }}
       >
@@ -47,7 +49,7 @@ const Column = ({ title, tasks, id }) => {
             isDraggingOver={snapshot.isDraggingOver}
           >
             {tasks.map((task, index) => (
-              <Task key={index} index={index} task={task} />
+              <Task key={index} index={index} task={task} refetch={refetch} />
             ))}
             {/* <Task task={{ id: 123, title: 'Make react app' }} index={1}></Task> */}
             {provided.placeholder}

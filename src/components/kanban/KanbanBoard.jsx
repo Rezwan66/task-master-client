@@ -85,20 +85,26 @@ const KanbanBoard = ({ tasks, refetch }) => {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <h2 className="text-center">MY PROGRESS BOARD</h2>
+      <h2 className="text-center text-3xl font-bold my-4">MY TASK BOARD</h2>
+      <p className="text-center italic mb-2 text-xs">
+        ** Drag a task to the top of your desired category!
+      </p>
       <div className="flex justify-between items-center md:flex-row flex-col">
         <Column
           title={'TO DO'}
+          refetch={refetch}
           tasks={tasks.filter(task => task.category === 'to-do')}
           id={'1'}
         />
         <Column
           title={'ONGOING'}
+          refetch={refetch}
           tasks={tasks.filter(task => task.category === 'ongoing')}
           id={'2'}
         />
         <Column
           title={'COMPLETED'}
+          refetch={refetch}
           tasks={tasks.filter(task => task.category === 'completed')}
           id={'3'}
         />

@@ -58,7 +58,7 @@ const AddTask = () => {
     <div className="flex justify-center">
       <DashboardContainer>
         <div className="relative flex flex-col rounded-xl bg-clip-border shadow-xl p-6">
-          <h4 className="block font-sans text-2xl font-bold leading-snug tracking-normal text-center antialiased">
+          <h4 className="block font-sans text-2xl font-bold leading-snug tracking-normal text-center antialiased uppercase">
             Add Tasks Here
           </h4>
           <form
