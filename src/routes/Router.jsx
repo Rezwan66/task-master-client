@@ -9,6 +9,8 @@ import Dashboard from '../layouts/Dashboard';
 import DashboardHome from '../pages/Dashboard/DashboardHome';
 import AddTask from '../pages/Dashboard/AddTask';
 import Todo from '../pages/Dashboard/Todo';
+import ForWhom from '../pages/ForWhom';
+import Faq from '../pages/Faq';
 
 const Router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const Router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+      },
+      {
+        path: '/forWhom',
+        element: <ForWhom></ForWhom>,
+      },
+      {
+        path: '/faq',
+        element: <Faq></Faq>,
       },
     ],
   },

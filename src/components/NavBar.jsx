@@ -104,7 +104,7 @@ const NavBar = () => {
           className={({ isActive }) =>
             isActive ? 'text-orange-400 font-bold underline' : ''
           }
-          to="/addTask"
+          to="/forWhom"
         >
           Who is it for
         </NavLink>
@@ -135,7 +135,7 @@ const NavBar = () => {
           className={({ isActive }) =>
             isActive ? 'text-orange-400 font-bold underline' : ''
           }
-          to="/addTask"
+          to="/faq"
         >
           FAQ
         </NavLink>
