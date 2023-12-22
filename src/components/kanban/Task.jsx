@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
+import { FaEdit } from 'react-icons/fa';
+import { useForm } from 'react-hook-form';
 
 const Container = styled.div`
   border-radius: 10px;
@@ -42,6 +44,55 @@ function bgcolorChange(props) {
 
 const Task = ({ task, index, refetch }) => {
   const axiosPublic = useAxiosPublic();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    // watch,
+    // formState: { errors },
+  } = useForm();
+
+  const onSubmit = data => {
+    // console.log(data, task._id, task.email, task.category);
+    const updatedTask = {
+      title: data.title,
+      description: data.description,
+      deadline: data.date,
+      priority: data.priority,
+      email: task?.email,
+      category: task?.category,
+    };
+    // console.log(updatedTask);
+    axiosPublic
+      .put(`/tasks/${task._id}`, updatedTask)
+      .then(res => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            title: 'Updated!',
+            text: 'Your service has been updated.',
+            icon: 'success',
+          });
+          reset();
+          refetch();
+          // Close the modal after the task is successfully updated
+          const modal = document.getElementById(`my_modal_${task._id}`);
+          if (modal) {
+            modal.close();
+          }
+        }
+      })
+      .catch(err => {
+        toast(err.message, {
+          icon: '❌',
+          style: {
+            borderRadius: '8px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
+      });
+  };
 
   const handleDelete = () => {
     console.log(task?._id);
@@ -107,8 +158,117 @@ const Task = ({ task, index, refetch }) => {
                 <TiDelete className="text-2xl text-red-500" />
               </button>
             </div>
-            <i>{task.description}</i>
-            <div className="flex items-center justify-between text-xs mt-2">
+            <div className="flex justify-between items-center my-1">
+              <p className="italic text-md">{task.description}</p>
+              {/* edit */}
+              <div>
+                {/* <button className="btn btn-secondary btn-block">Book Now</button> */}
+                {/* modal */}
+                {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                <button
+                  onClick={() =>
+                    document.getElementById(`my_modal_${task._id}`).showModal()
+                  }
+                >
+                  <FaEdit className="text-xl text-slate-700" />
+                </button>
+                <dialog id={`my_modal_${task._id}`} className="modal">
+                  <div className="modal-box w-11/12 max-w-4xl bg-purple-200">
+                    <h3 className="font-bold text-2xl text-center text-secondary">
+                      Edit Task!
+                    </h3>
+                    <p className="text-xs text-right my-2 italic">
+                      Press ESC to cancel!
+                    </p>
+                    <div className="">
+                      <form onSubmit={handleSubmit(onSubmit)} method="dialog">
+                        {/* if there is a button, it will close the modal */}
+                        {/* task title */}
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text text-primary text-sm">
+                              Task
+                            </span>
+                          </label>
+                          <input
+                            defaultValue={task?.title}
+                            type="text"
+                            name="title"
+                            {...register('title')}
+                            placeholder="task title"
+                            className="input input-bordered"
+                            required
+                          />
+                        </div>
+                        {/* description */}
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text text-primary text-sm">
+                              Description
+                            </span>
+                          </label>
+                          <textarea
+                            type="textarea"
+                            defaultValue={task?.description}
+                            name="description"
+                            {...register('description')}
+                            placeholder="task description"
+                            className="textarea textarea-bordered"
+                            required
+                          />
+                        </div>
+                        {/* date */}
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text text-primary text-sm">
+                              Deadline
+                            </span>
+                          </label>
+                          <input
+                            type="date"
+                            defaultValue={task?.deadline}
+                            name="date"
+                            {...register('date')}
+                            className="input input-bordered"
+                            required
+                          />
+                        </div>
+                        {/* select importance */}
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text text-primary text-sm">
+                              Priority
+                            </span>
+                          </label>
+                          <select
+                            defaultValue={task?.priority || 'default'}
+                            {...register('priority', { required: true })}
+                            className="select select-bordered w-full"
+                          >
+                            <option disabled value="default">
+                              Select a task priority
+                            </option>
+                            <option value="low">LOW</option>
+                            <option value="moderate">MODERATE</option>
+                            <option value="high">HIGH</option>
+                          </select>
+                        </div>
+                        {/* submit */}
+                        <div className="form-control mt-6">
+                          <button
+                            type="submit"
+                            className="btn btn-primary capitalize"
+                          >
+                            Edit task
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </dialog>
+              </div>
+            </div>
+            <div className="flex items-center justify-between text-xs mt-3">
               <TextContent>
                 <strong>Priority:</strong> {task.priority}
               </TextContent>
