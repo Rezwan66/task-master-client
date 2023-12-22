@@ -106,7 +106,7 @@ const NavBar = () => {
           }
           to="/forWhom"
         >
-          Who is it for
+          Who is it for?
         </NavLink>
       </li>
       <li>
