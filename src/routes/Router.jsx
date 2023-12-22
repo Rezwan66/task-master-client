@@ -24,11 +24,19 @@ const Router = createBrowserRouter([
       },
       {
         path: '/forWhom',
-        element: <ForWhom></ForWhom>,
+        element: (
+          <PrivateRoute>
+            <ForWhom></ForWhom>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/faq',
-        element: <Faq></Faq>,
+        element: (
+          <PrivateRoute>
+            <Faq></Faq>
+          </PrivateRoute>
+        ),
       },
     ],
   },

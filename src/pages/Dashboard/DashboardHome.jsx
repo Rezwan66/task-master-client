@@ -21,7 +21,7 @@ const DashboardHome = () => {
                   className="w-32 h-32 rounded-full shadow-2xl object-cover"
                 />
               </div>
-              <div className="">
+              <div className="text-center">
                 <h1 className="text-3xl font-bold">{user?.displayName}</h1>
                 <p className="italic my-4">{user?.email}</p>
                 <Link to="/dashboard/todo">
