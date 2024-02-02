@@ -28,7 +28,7 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu uppercase p-4 w-80 text-lg min-h-full bg-violet-200 dark:bg-zinc-900 dark:text-white">
+          <ul className="menu flex flex-col flex-wrap uppercase p-8 w-80 text-lg font-medium min-h-full bg-violet-200 dark:bg-zinc-900 dark:text-white ">
             {/* logo+website name */}
             <div className="flex items-center justify-center gap-4 mb-8">
               <Link to="/dashboard/profile">
@@ -38,24 +38,35 @@ const Dashboard = () => {
               </Link>
             </div>
             {/* Sidebar content here */}
-            <li>
-              <NavLink to="/dashboard/profile">
+
+            <li className="dark:hover:!text-yellow-600">
+              <NavLink
+                // className={'flex items-center justify-center gap-4'}
+                to="/dashboard/profile"
+              >
                 <FaUserAstronaut />
                 My Profile
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/dashboard/addTask">
+            <li className="dark:hover:!text-yellow-600">
+              <NavLink
+                // className={'flex items-center justify-center gap-4'}
+                to="/dashboard/addTask"
+              >
                 <FaPlusCircle />
                 Add A Task
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/dashboard/todo">
+            <li className="dark:hover:!text-yellow-600">
+              <NavLink
+                // className={'flex items-center justify-center gap-4'}
+                to="/dashboard/todo"
+              >
                 <FaCalendarAlt />
                 My tasks
               </NavLink>
             </li>
+
             {/* go to home/mainLayout-shared links */}
             <div className="divider my-6"></div>
 
