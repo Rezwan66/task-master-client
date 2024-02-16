@@ -86,7 +86,7 @@ const KanbanBoard = ({ tasks, refetch }) => {
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <h2 className="text-center text-3xl font-bold my-4">MY TASK BOARD</h2>
-      <p className="text-center italic mb-2 text-xs">
+      <p className="text-center italic mb-4 text-xs">
         ** Drag a task to the top of your desired category!
       </p>
       <div className="flex justify-between items-center md:flex-row flex-col">

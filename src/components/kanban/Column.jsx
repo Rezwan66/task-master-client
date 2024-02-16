@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Task from './Task';
 
 const Container = styled.div`
-  background-color: #f4f5f7;
+  background-color: #e8dff5;
   border-radius: 2.5px;
   width: 300px;
   height: 475px;
@@ -24,7 +24,7 @@ const TaskList = styled.div`
   padding: 3px;
   padding-top: 10px;
   transition: background-color 0.2s ease;
-  background-color: #f4f5f7;
+  background-color: #e8dff5;
   flex-grow: 1;
   min-height: 100px;
 `;
